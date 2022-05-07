@@ -1,6 +1,10 @@
 import PySimpleGUI as sg
 import pandas as pd
-
+from openpyxl import load_workbook
+from datetime import datetime
+import warnings
+with warnings.catch_warnings():
+    warnings.filterwarnings("ignore", category=DeprecationWarning)
 #Theme
 sg.theme('DarkGrey8')
 
@@ -65,7 +69,7 @@ def make_win1():
                                                 sg.Checkbox('None', key= 'None')],
 
                     [sg.Button('Launch 2nd Window'), sg.Submit(), sg.Button('Exit')]]
-    return sg.Window('ECLI Vibes', layout, location=(800,600), finalize=True)
+    return sg.Window('ECLI Vibes', layout, no_titlebar=True, finalize=True, keep_on_top= True)
 
     
 ############################################################################### SECOND WINDOW #################################################################################################################################
@@ -180,12 +184,13 @@ def make_win2():
                                                                                                                                                     
          
     [sg.Submit(), sg.Button('Exit')]]
-    return sg.Window('Window: 2', layout, finalize=True)
+    return sg.Window('Window: 2', layout, no_titlebar = True, finalize=True, keep_on_top= True)
 
 
 def main():
     EXCEL_FILE = (r'C:\Users\Nicholas\OneDrive\Desktop\ecliVibesPython\dataEntry.xlsx')
-    df = pd.read_excel(EXCEL_FILE)
+    df = pd.read_excel(EXCEL_FILE, index_col=[0])
+
     window1, window2 = make_win1(), None        # start off with 1 window open
 
     while True:     
@@ -199,11 +204,11 @@ def main():
         elif event == 'Launch 2nd Window' and not window2:
             window2 = make_win2()
         if event == 'Submit':
-            df = df.append(values, ignore_index = True)
+            df = df.append(values, ignore_index = True)  #ERROR: Getting Removed from Pandas Library
             df.to_excel(EXCEL_FILE, index= False)
             sg.popup('Survey Submitted!')
-            
-    
+
+
 if __name__ == '__main__':
     main()
 
