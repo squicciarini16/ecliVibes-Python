@@ -208,7 +208,6 @@ def main():
             df.to_excel(EXCEL_FILE, index= False)
             sg.popup('Survey Submitted!')
 
-
 if __name__ == '__main__':
     main()
 
