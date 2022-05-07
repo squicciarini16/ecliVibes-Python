@@ -204,9 +204,9 @@ def main():
         elif event == 'Launch 2nd Window' and not window2:
             window2 = make_win2()
         if event == 'Submit':
-            df = df.append(values, ignore_index = True)  #ERROR: Getting Removed from Pandas Library
+            df = pd.concat([df,pd.DataFrame.from_records([values])], ignore_index=True)  
             df.to_excel(EXCEL_FILE, index= False)
-            sg.popup('Survey Submitted!')
+            sg.popup('Survey Submitted!', keep_on_top =True)
 
 if __name__ == '__main__':
     main()
