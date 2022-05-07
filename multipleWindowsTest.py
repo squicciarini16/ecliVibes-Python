@@ -122,16 +122,11 @@ def make_win2():
     sg.InputText(key = 'What are your cultural competency policies and guidelines? Please explain')],            
 
     [sg.Text('Barriers to Housing')],
-    ############# MUST CHANGE CHECKBOX TO COMBO BOX
-    [sg.Text('If you have ever been denied housing to a victim of human trafficking, what were the reasons?', size = (70,1)), 
-                                                                                                                sg.Checkbox('Substance use', key = 'Substance use'),
-                                                                                                                sg.Checkbox('Gang involvment', key = 'Gang involvment'),
-                                                                                                                sg.Checkbox('Emergency housing not an option', key = 'Emergency housing not an option'),
-                                                                                                                sg.Checkbox('Immigration issues', key = 'Immigration issues'),
-                                                                                                                sg.Checkbox('Mental Health', key = 'Mental Health'),
-                                                                                                                sg.Checkbox('Past criminal history', key = 'Past criminal history'),
-                                                                                                                sg.Checkbox('Waitlist barrier', key = 'Waitlist barrier'),
-                                                                                                                sg.Checkbox('None of the above', key = 'None of the above')],
+    
+    [sg.Text('If you have ever been denied housing to a victim of human trafficking, what were the reasons?', size = (70,1)), sg.Combo(['Substance use','Gang involvment','Emergency housing not an option','Immigration issues',
+    'Mental Health','Past criminal history','Waitlist barrier','None of the above'], key = 'If you have ever been denied housing to a victim of human trafficking, what were the reasons?')],
+                                                         
+                                                                                                               
     [sg.Text('If you chose any of the above options, please explain', size = (15,1)), 
     sg.InputText(key = 'If you chose any of the above options, please explain')],
 
@@ -150,15 +145,10 @@ def make_win2():
                                                         sg.Checkbox('None of the above', key = 'None of the above')],
 
     [sg.Text('Screening Process')],
-    ############ CHANGE FROM CHECKBOX TO COMBO
-    [sg.Text('How are survivors able to access services?', size = (15,1)),
-                                                            sg.Checkbox('Walk-in', key='Walk-in'),
-                                                            sg.Checkbox('Call hotline', key = 'Call hotline'),
-                                                            sg.Checkbox('In-person intake', key= 'In-person intake'),
-                                                            sg.Checkbox('Phone interview', key = 'Phone interview'),
-                                                            sg.Checkbox('Outreach workers', key = 'Outreach workers'),
-                                                            sg.Checkbox('None of the above', key = 'None of the above')],
-
+    
+    [sg.Text('How are survivors able to access services?', size = (15,1)), sg.Combo(['Walk-in','Call hotline','In-person intake','Phone interview','Outreach workers',
+    'None of the above'], key = 'How are survivors able to access services?')],
+                                        
     [sg.Text('What are your screening procedures? Please describe', size = (15,1)), 
     sg.InputText(key = 'What are your screening procedures? Please describe')], 
 
@@ -169,25 +159,12 @@ def make_win2():
                                                                     sg.Checkbox('None of the above', key = 'None of the above')],
 
     [sg.Text('Setting Layout and Services')],
-    ##### CHANGE FROM CHECKBOX TO COMBO
-    [sg.Text('Please describe the housing setting', size = (15,1)), 
-                                                    sg.Checkbox('Shared room', key = 'Shared room'),
-                                                    sg.Checkbox('Private room in shared setting', key = 'Private room in shared setting'),
-                                                    sg.Checkbox('Private setting', key = 'Private setting'),
-                                                    sg.Checkbox('Accessibility', key = 'Accessibility'),
-                                                    sg.Checkbox('Americans with Disabilities Act', key = 'Americans with Disabilities Act'),
-                                                    sg.Checkbox('None of the above', key = 'None of the above')],
-    ########## CHANGE FROM CHECKBOX TO COMBO
-    [sg.Text('What supportive services are provided?', size = (15,1)), sg.Combo('Food onsite','Case management','Legal/Advocay services',)
-                                                       
-                                                       
-                                                        sg.Checkbox('Employment support services', key = 'Employment support services'),
-                                                        sg.Checkbox('Transportation', key = 'Transportation'),
-                                                        sg.Checkbox('Language Access/Interpretation Services', key = 'Language Access/Interpretation Services'),
-                                                        sg.Checkbox('Safety Planning', key = 'Safety Planning'),
-                                                        sg.Checkbox('SOAR Certified staff', key = 'SOAR Certified staff'),
-                                                        sg.Checkbox('Support with accessing benefits', key = 'Support with accessing benefits'),
-                                                        sg.Checkbox('None of the above', key = 'None of the above')],
+
+    [sg.Text('Please describe the housing setting', size = (15,1)), sg.Combo(['Shared room','Private room in shared setting','Private setting','Accessibility','Americans with Disabilities Act','None of the above'],
+    key = 'Please describe the housing setting')],
+                                
+    [sg.Text('What supportive services are provided?', size = (15,1)), sg.Combo(['Food onsite','Case management','Legal/Advocay services','Employment support services','Transportation',
+    'Language Access/Interpretation Services','Safety Planning','SOAR Certified staff','Support with accessing benefits','None of the above'], key = 'What supportive services are provided?')],                               
     
     [sg.Text('Is there any aspect of the housing setting that is unique? Please describe: EG- therapeutic horses, painting classes yoga onsite, etc...', size = (70,1)), 
     sg.InputText(key = 'Is there any aspect of the housing setting that is unique? Please describe: EG- therapeutic horses, painting classes yoga onsite, etc...')], 
