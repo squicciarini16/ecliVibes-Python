@@ -1,7 +1,7 @@
+from tkinter import font
 import PySimpleGUI as sg
 import pandas as pd
-from openpyxl import load_workbook
-from datetime import datetime
+
 import warnings
 with warnings.catch_warnings():
     warnings.filterwarnings("ignore", category=DeprecationWarning)
@@ -30,7 +30,7 @@ def make_win1():
 
              [sg.Text('Agency Website', size=(15,1)),sg.InputText(key = 'Agency Website')],
 
-            [sg.Text('Agency Phone Number', size=(15,1)),sg.InputText(key = 'Agency Phone Number')],
+            [sg.Text('Agency Phone Number', size=(18,1)),sg.InputText(key = 'Agency Phone Number')],
 
             [sg.Text('Tell Us More!', size=(15,1)),sg.InputText(key = 'Tell Us More!')],
 
@@ -46,23 +46,23 @@ def make_win1():
                                                                                 sg.Checkbox('No', key = 'No'),
                                                                                 sg.Checkbox('Unsure', key = 'Unsure')],
 
-            [sg.Text('What is your housing funding source?', size=(40,1)), sg.Combo(['Housing and Urban Development','Office on Violence Against Women', 
+            [sg.Text('What is your housing funding source?', size=(30,1)), sg.Combo(['Housing and Urban Development','Office on Violence Against Women', 
             'Office for Victims of Crime', 'Community based',"I don't know our housing funding source"], key = 'What is your housing funding source?')],
 
-            [sg.Text('What type of housing is offered for human trafficking surviviors?', size = (50,1)), sg.Combo(['Emergency Shelter', 'Transitional Housing', 'Shared Housing', 
+            [sg.Text('What type of housing is offered for human trafficking surviviors?', size = (45,1)), sg.Combo(['Emergency Shelter', 'Transitional Housing', 'Shared Housing', 
             'Permanent Supportive Housing', 'Permanent Rapid Housing','None of the above'], key = 'What type of housing is offered for human trafficking surviviors?')],
 
-            [sg.Text('If you chose emergency shelter, what type of shelter', size = (50,1)), 
+            [sg.Text('If you chose emergency shelter, what type of shelter', size = (45,1)), 
                                                                                 sg.Checkbox('DV Emergency Shelter', key = 'DV Emergency Shelter'),
                                                                                 sg.Checkbox('DSS Shelter', key = 'DSS Shelter'),
                                                                                 sg.Checkbox('Tier II Shelter', key = 'Tier II Shelter'),
                                                                                 sg.Checkbox('Charity-Based Shelter', key= 'Charity-Based Shelter'),
                                                                                 sg.Checkbox('None', key = 'None')],
 
-            [sg.Text('What are the time limitations for housing options?', size = (50,1)), sg.Combo(['1-3 days', 'up to 30 days', 'up to 90 days',
+            [sg.Text('What are the time limitations for housing options?', size = (45,1)), sg.Combo(['1-3 days', 'up to 30 days', 'up to 90 days',
             'up to 6 months','6 months to 1 year', 'more than 1 year', 'There is no limitation','None'], key = 'What are the time limitations for housing options?')],
 
-            [sg.Text('What area do you serve', size = (50,1)), 
+            [sg.Text('What area do you serve', size = (20,1)), 
                                                 sg.Checkbox('Suffolk County', key = 'Suffolk County'), 
                                                 sg.Checkbox('Nassau County', key = 'Nassau County'), 
                                                 sg.Checkbox('All of Long Island', key = 'All of Long Island'),
@@ -88,37 +88,37 @@ def make_win2():
     [sg.Text('Housing is available for', size = (20,1)), sg.Combo(['Single identifying female','Single identifying male','Households without children',
     'Households with children','Housholds with children only under 18','Pregnant','None of the above'], key = 'Housing is available for')],
                                         
-    [sg.Text('Housing is targeted for individuals with the following immigration status', size = (50,1)),
+    [sg.Text('Housing is targeted for individuals with the following immigration status', size = (53,1)),
                                                                                         sg.Checkbox('US Citizen', key = 'US Citizen'),
                                                                                         sg.Checkbox('Documented foreign national', key = 'Documented foreign national'),
                                                                                         sg.Checkbox('Undocumented foreign national', key = 'Undocumented foreign national'),
                                                                                         sg.Checkbox('None of the above', key = 'None of the above')],
-    [sg.Text('Is an Axis 1 diagnosis required to quality for housing?', size = (50,1)),
+    [sg.Text('Is an Axis 1 diagnosis required to quality for housing?', size = (45,1)),
                                                                         sg.Checkbox('Yes', key = 'Yes'),
                                                                         sg.Checkbox('No', key = 'No'),
                                                                         sg.Checkbox('Unsure', key = 'Unsure'),
                                                                         sg.Checkbox('Not applicable', key = 'Not applicable')],
-    [sg.Text('With regards to substance abuse, individuals', size = (50,1)), sg.Combo(['Must be sober', 'There is no barrier for substance abuse', 'Other'], key = 'With regards to substance abuse, individuals')],
+    [sg.Text('With regards to substance abuse, individuals', size = (45,1)), sg.Combo(['Must be sober', 'There is no barrier for substance abuse', 'Other'], key = 'With regards to substance abuse, individuals')],
 
     [sg.Text('Inclusive Housing Information')],
 
     [sg.Text('Which population do you target?', key = (15,1)), sg.Combo(['LGBTQ+', 'Youth', 'Black Indigenous People Of Color', 
     'Asian/Pacific Islander or Asian Americans and Pacific Islanders', 'Individuals with disabilities','None of the above'], key = 'Which population do you target?')],
 
-    [sg.Text('What language access do you offer?', size = (50,1)), 
+    [sg.Text('What language access do you offer?', size = (35,1)), 
                                                     sg.Checkbox('English only', key = 'English only'),
                                                     sg.Checkbox('Multi-Language Speaking Providers', key = 'Multi-Language Speaking Providers'),
                                                     sg.Checkbox('Language Access Hotline', key = 'Language Access Hotline'),
                                                     sg.Checkbox('None', key = 'None')],
     
-    [sg.Text('If you chose multi-language speaking providers, what languages do your service providers speak?', size = (80,1)), 
+    [sg.Text('If you chose multi-language speaking providers, what languages do your service providers speak?', size = (75,1)), 
     sg.InputText(key = 'If you chose multi-language speaking providers, what languages do your service providers speak?')],
 
     [sg.Text('Is your agency Americans with Disabilities Act (ADA) compliant?', size = (50,1)), 
                                                                                     sg.Checkbox('Yes', key = 'Yes'),
                                                                                     sg.Checkbox('No', key = 'No'),
                                                                                     sg.Checkbox('Unsure', key = 'Unsure')],
-     [sg.Text('What are your cultural competency policies and guidelines? Please explain', size = (80,1)), 
+     [sg.Text('What are your cultural competency policies and guidelines? Please explain', size = (75,1)), 
     sg.InputText(key = 'What are your cultural competency policies and guidelines? Please explain')],            
 
     [sg.Text('Barriers to Housing')],
@@ -127,7 +127,7 @@ def make_win2():
     'Mental Health','Past criminal history','Waitlist barrier','None of the above'], key = 'If you have ever been denied housing to a victim of human trafficking, what were the reasons?')],
                                                          
                                                                                                                
-    [sg.Text('If you chose any of the above options, please explain', size = (50,1)), 
+    [sg.Text('If you chose any of the above options, please explain', size = (45,1)), 
     sg.InputText(key = 'If you chose any of the above options, please explain')],
 
     [sg.Text('Do you require client COVID-19 Testing', size = (30,1)), 
@@ -135,10 +135,10 @@ def make_win2():
                                                         sg.Checkbox('No', key = 'No'),
                                                         sg.Checkbox('Unsure', key = 'Unsure')],
 
-    [sg.Text('Do you have any COVID-19 accommodations or restrictions? Please explain', size = (50,1)), 
+    [sg.Text('Do you have any COVID-19 accommodations or restrictions? Please explain', size = (60,1)), 
     sg.InputText(key = 'Do you have any COVID-19 accommodations or restrictions? Please explain')],
 
-    [sg.Text('Due to COVID-19, how are services being provided?', size = (50,1)),
+    [sg.Text('Due to COVID-19, how are services being provided?', size = (45,1)),
                                                         sg.Checkbox('In-person', key = 'In-person'),
                                                         sg.Checkbox('Hybrid', key = 'Hybrid'),
                                                         sg.Checkbox('Online', key = 'Online'),
@@ -146,13 +146,13 @@ def make_win2():
 
     [sg.Text('Screening Process')],
     
-    [sg.Text('How are survivors able to access services?', size = (50,1)), sg.Combo(['Walk-in','Call hotline','In-person intake','Phone interview','Outreach workers',
+    [sg.Text('How are survivors able to access services?', size = (45,1)), sg.Combo(['Walk-in','Call hotline','In-person intake','Phone interview','Outreach workers',
     'None of the above'], key = 'How are survivors able to access services?')],
                                         
-    [sg.Text('What are your screening procedures? Please describe', size = (50,1)), 
+    [sg.Text('What are your screening procedures? Please describe', size = (45,1)), 
     sg.InputText(key = 'What are your screening procedures? Please describe')], 
 
-    [sg.Text('If you have a hotline, how is the hotline accessed?', size = (50,1)),
+    [sg.Text('If you have a hotline, how is the hotline accessed?', size = (45,1)),
                                                                     sg.Checkbox('Survivor calls on their own', key = 'Survivor calls on their own'),
                                                                     sg.Checkbox('Survivor can call with a case worker', key = 'Survivor can call with a case worker'),
                                                                     sg.Checkbox('Case worker can call on behalf of the survivor', key = 'Case worker can call on behalf of the survivor'),
@@ -160,10 +160,10 @@ def make_win2():
 
     [sg.Text('Setting Layout and Services')],
 
-    [sg.Text('Please describe the housing setting', size = (50,1)), sg.Combo(['Shared room','Private room in shared setting','Private setting','Accessibility','Americans with Disabilities Act','None of the above'],
+    [sg.Text('Please describe the housing setting', size = (35,1)), sg.Combo(['Shared room','Private room in shared setting','Private setting','Accessibility','Americans with Disabilities Act','None of the above'],
     key = 'Please describe the housing setting')],
                                 
-    [sg.Text('What supportive services are provided?', size = (50,1)), sg.Combo(['Food onsite','Case management','Legal/Advocay services','Employment support services','Transportation',
+    [sg.Text('What supportive services are provided?', size = (35,1)), sg.Combo(['Food onsite','Case management','Legal/Advocay services','Employment support services','Transportation',
     'Language Access/Interpretation Services','Safety Planning','SOAR Certified staff','Support with accessing benefits','None of the above'], key = 'What supportive services are provided?')],                               
     
     [sg.Text('Is there any aspect of the housing setting that is unique? Please describe: EG- therapeutic horses, painting classes yoga onsite, etc...', size = (100,1)), 
@@ -171,7 +171,7 @@ def make_win2():
 
     [sg.Text('Agency Rules')],
 
-    [sg.Text('Do you have a program overview or is there an application of your program?', size = (80,1)),
+    [sg.Text('Do you have a program overview or is there an application of your program?', size = (60,1)),
                                                                                             sg.Checkbox('Yes (If yes, please email it to Molly England menengland@empowerli.org', key = 'Yes (If yes, please email it to Molly England menengland@empowerli.org'),
                                                                                             sg.Checkbox('No', key = 'No'),
                                                                                             sg.Checkbox('Unknown', key = 'Unknown')],
@@ -188,7 +188,7 @@ def make_win2():
 
 
 def main():
-    EXCEL_FILE = (r'C:\Users\Nicholas\OneDrive\Desktop\ecliVibesPython\dataEntry.xlsx')
+    EXCEL_FILE = (r'C:\Users\Nicholas\OneDrive\Desktop\ecliVibesPython\ecliVibesDB.xlsx')
     df = pd.read_excel(EXCEL_FILE, index_col=[0])
 
     window1, window2 = make_win1(), None        # start off with 1 window open
